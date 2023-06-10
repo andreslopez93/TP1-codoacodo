@@ -256,6 +256,7 @@
                     </div>
                     <div class="modal-footer">
                       <span id="alertZone" class="alert" style="padding: 5px; display: none;"></span>
+                      <img id="spinner" src="./img/loading.gif" alt="loading" style="width: 16px; display: none;">
                       <button type="button" onclick="comprar();" class="btn btn-primary" data-toggle="collapse" href="#alerZone">Comprar</button>
                       <button type="button" onclick="borrar();" class="btn btn-secondary close" data-dismiss="modal">Cerrar</button>
                     </div>
@@ -346,16 +347,17 @@
                 let nombre = jQuery('#inputNombre').val();
                 let apellido = jQuery('#inputApellido').val();
                 let email = jQuery('#inputEmail').val();
-                                
+
                 if ( nombre!='' && apellido!='' && email!='' && regex.test(email) ){
                     let ticket = resumen();
-                    jQuery('#alertZone').addClass(ticket[0]).text(ticket[1]);
-                    console.log(ticket);
+                    jQuery('#spinner').show();
+                    setTimeout(function() {
+                        jQuery('#alertZone').addClass(ticket[0]).text(ticket[1]);
+                        jQuery('#spinner').hide();
+                    }, 2500);
                 }else{
                     jQuery('#alertZone').addClass(status).text(text);
                 }
-                
-                
             }
             function borrar(){
                 jQuery('#inputCantidad').val('');
