@@ -233,8 +233,7 @@
                               <div class="col-md-6">
                                 <label for="inputCategoria" class="form-label">Categoría</label>
                                 <select id="inputCategoria" class="form-select" onchange="resumen();" required>
-                                  <option value="none" selected disabled>Seleccionar</option>
-                                  <option value=0.2 >Estudiante</option>
+                                  <option value=0.2 selected>Estudiante</option>
                                   <option value=0.5>Trainee</option>
                                   <option value=0.85>Junior</option>
                                   <option value=1>General</option>
@@ -329,7 +328,7 @@
                 let status = 'text-danger d-block';
                 let text = 'Error, seleccione primero';
 
-                if( qty.val()>=1 && cat.val()!='none'){
+                if( qty.val()>=1 ){
                     qty = qty.val();
                     cat = cat.val();
                     let valor = parseFloat(qty*cat*val).toFixed(2).replace('.', ',');
@@ -338,7 +337,6 @@
                     text = '¡Compra Exitosa!';
                     return Array(status,text,qty,cat,valor);
                 }
-
                 return Array(status,text);
             }
 
