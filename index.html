@@ -38,7 +38,7 @@
                                 <a class="nav-link" href="#convertirse">Conviértete en orador</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-success" href="#">Comprar tickets</a>
+                                <a id="" class="nav-link text-success comprar-tickets" href="#">Comprar tickets</a>
                             </li>
                         </ul>
                     </div>
@@ -55,7 +55,7 @@
                     <p class="fs-5">Bs As llega por primera vez a Argentina. Un evento para compartir con nuestra comunidad el conocimiento y experiencia de los expertos que están creando el futuro de Internet. Ven a conocer a miembros del evento, a otros estudiantes de Codo a Codo y los oradores de primer nivel que tenemos para ti. ¡Te esperamos!</p>
                     <div class="d-flex justify-content-end column-gap-3">
                         <a role="button" class="btn btn-outline-light" href="#convertirse">Quiero ser orador</a>
-                        <button type="button" class="btn btn-success">Comprar tickets</button>
+                        <button type="button" class="btn btn-success comprar-tickets">Comprar tickets</button>
                     </div>
                 </div>
 
@@ -166,6 +166,104 @@
             </div>
         </section>
 
+        <!-- Modal -->
+        <section>
+            <div id="modal-tickets" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3 class="modal-title">Comprar Tickets</h3>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container fluid d-flex justify-content-center ">
+                            <!--Card 1-->
+                          <div class="card-group">
+                            <div class="card border border-primary text-center mx-1">
+                              <div class="card-body">
+                                <p class="card-text h4">Estudiante</p>
+                                <p class="card-text">Tiene un descuento</p>
+                                <p class="card-text"><strong>80%</strong></p>
+                                <p class="card-text text-muted"><small>*presentar documentación</small></p>
+                              </div>
+                            </div>
+                            <!--Card 2-->
+                            <div class="card border border-success text-center mx-1">
+                              <div class="card-body">
+                                <p class="card-text h4">Trainee</p>
+                                <p class="card-text">Tiene un descuento</p>
+                                <p class="card-text"> <strong>50%</strong></p>
+                                <p class="card-text text-muted"><small> *presentar documentación</small></p>
+                              </div>
+                            </div>
+                            <!--Card 3-->
+                            <div class="card border border-warning text-center mx-1">
+                              <div class="card-body">
+                                <p class="card-text h4">Junior</p>
+                                <p class="card-text">Tiene un descuento</p>
+                                <p class="card-text"> <strong>15%</strong></p>
+                                <p class="card-text text-muted"><small> *presentar documentación</small></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                            <p class="text-uppercase pt-2 mb-0 text-center">
+                                <small>venta</small>
+                            </p>
+                            <p id="valorTK" class="h3 text-uppercase text-center" data-valorTk="200">valor de ticket $200</p>
+                        </div>
+                        <div class="container-fluid col-9">
+                            <form class="row g-3" id="compraEntradas">
+                              <div class="col-md-6">
+                                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" aria-label="Nombre" value="" required>
+                              </div>
+                              <div class="col-md-6">
+                                <input type="text" class="form-control" id="inputApellido" placeholder="Apellido" aria-label="Apellido" value="" required>
+                              </div>
+                              <div class="col-12">
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Correo" aria-label="Correo" value="" required>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="inputCantidad" class="form-label">Cantidad</label>
+                                <input type="number" class="form-control" id="inputCantidad" placeholder="cantidad" step="1" min="1" max="10" value="" onchange="resumen();" required>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="inputCategoria" class="form-label">Categoría</label>
+                                <select id="inputCategoria" class="form-select" onchange="resumen();" required>
+                                  <option value="none" selected disabled>Seleccionar</option>
+                                  <option value=0.2 >Estudiante</option>
+                                  <option value=0.5>Trainee</option>
+                                  <option value=0.85>Junior</option>
+                                  <option value=1>General</option>
+                                </select>
+                              </div>
+                              <div class="alert alert-primary " role="alert">
+                                <p class="mb-0" id="importeTotal">Total a Pagar: $
+                                    <span id="totalTK"></span>
+                                </p>
+                              </div>
+                              <div class="col">
+                                  <button class="btn btn-success col-sm-12  botonEnviar" type="button" id="btnTkborrar" onclick="borrar();">Borrar</button>
+                              </div>
+                              <div class="col">
+                                  <button class="btn btn-success col-sm-12 botonEnviar" type="button" id="btnTkresumen" onclick="resumen();">Resumen</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <span id="alertZone" class="alert" style="padding: 5px; display: none;"></span>
+                      <button type="button" onclick="comprar();" class="btn btn-primary" data-toggle="collapse" href="#alerZone">Comprar</button>
+                      <button type="button" onclick="borrar();" class="btn btn-secondary close" data-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+
         <!-- Footer -->
         <footer>
             <nav class="navbar bg-dark navbar-expand-lg container-fluid p-5" data-bs-theme="dark">
@@ -202,6 +300,70 @@
 
         <!-- Script -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        
+        <!-- Script Modal -->
+        <script>
+            jQuery(document).ready(function($) {
+                var btnTkopen = $('.comprar-tickets');
+                btnTkopen.on('click', function () {
+                    $('#modal-tickets').modal('show');
+                })
+                var btnTkclose = $('.close');
+                btnTkclose.on('click', function () {
+                    $('#modal-tickets').modal('hide');
+                })
+            });
+        </script>
+        <!-- Script Function -->
+        <script>
+            var val = jQuery('#valorTK').attr('data-valorTk');
+            var status = 'text-danger d-block';
+            var text = 'Error, faltan datos';
 
+            function resumen(){
+                let qty = jQuery('#inputCantidad');
+                let cat = jQuery('#inputCategoria');
+                let status = 'text-danger d-block';
+                let text = 'Error, seleccione primero';
+
+                if( qty.val()>1 && cat.val()!='none'){
+                    qty = qty.val();
+                    cat = cat.val();
+                    let valor = parseFloat(qty*cat*val).toFixed(2).replace('.', ',');
+                    jQuery('#totalTK').text(  valor  );
+                    status = 'text-success d-block';
+                    text = '¡Compra Exitosa!';
+                    return Array(status,text,qty,cat,valor);
+                }
+
+                return Array(status,text);
+            }
+
+            function comprar(){
+                jQuery('#alertZone').removeClass();
+                let nombre = jQuery('#inputNombre').val();
+                let apellido = jQuery('#inputApellido').val();
+                let email = jQuery('#inputEmail').val();
+                
+                if ( nombre!='' && apellido!='' && email!='' ){
+                    let ticket = resumen();
+                    jQuery('#alertZone').addClass(ticket[0]).text(ticket[1]);
+                    console.log(ticket);
+                }else{
+                    jQuery('#alertZone').addClass(status).text(text);
+                }
+                
+                
+            }
+            function borrar(){
+                jQuery('#inputCantidad').val('');
+                jQuery('#inputCategoria').val('none');
+                jQuery('#inputNombre').val('');
+                jQuery('#inputApellido').val('');
+                jQuery('#inputEmail').val('');
+                jQuery('#totalTK').text('');                    
+            }
+        </script>
     </body>
 </html>
