@@ -327,7 +327,7 @@
                 let status = 'text-danger d-block';
                 let text = 'Error, seleccione primero';
 
-                if( qty.val()>1 && cat.val()!='none'){
+                if( qty.val()>=1 && cat.val()!='none'){
                     qty = qty.val();
                     cat = cat.val();
                     let valor = parseFloat(qty*cat*val).toFixed(2).replace('.', ',');
