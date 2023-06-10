@@ -224,7 +224,7 @@
                                 <input type="text" class="form-control" id="inputApellido" placeholder="Apellido" aria-label="Apellido" value="" required>
                               </div>
                               <div class="col-12">
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Correo" aria-label="Correo" value="" required>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Correo" aria-label="Correo" value="" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
                               </div>
                               <div class="col-md-6">
                                 <label for="inputCantidad" class="form-label">Cantidad</label>
@@ -320,6 +320,7 @@
             var val = jQuery('#valorTK').attr('data-valorTk');
             var status = 'text-danger d-block';
             var text = 'Error, faltan datos';
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             function resumen(){
                 let qty = jQuery('#inputCantidad');
@@ -345,8 +346,8 @@
                 let nombre = jQuery('#inputNombre').val();
                 let apellido = jQuery('#inputApellido').val();
                 let email = jQuery('#inputEmail').val();
-                
-                if ( nombre!='' && apellido!='' && email!='' ){
+                                
+                if ( nombre!='' && apellido!='' && email!='' && regex.test(email) ){
                     let ticket = resumen();
                     jQuery('#alertZone').addClass(ticket[0]).text(ticket[1]);
                     console.log(ticket);
